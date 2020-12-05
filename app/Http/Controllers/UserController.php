@@ -54,4 +54,17 @@ class UserController extends Controller
     {
         //
     }
+    public function showPageAdmin()
+
+    {
+
+        if (!$this->userCan('view-back-end-home')) {
+
+            abort('403', __('Bạn không có quyền thực hiện thao tác này'));
+
+        }
+
+        return view("back-end.home");
+
+    }
 }

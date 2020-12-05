@@ -27,7 +27,9 @@
 
 <body>
 @include('font-end.core.header')
+@yield('slider')
 
+</header><!--/header-->
 <section>
     <div class="container">
         <div class="row">

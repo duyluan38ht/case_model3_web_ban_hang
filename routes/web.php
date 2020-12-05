@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\Home_back_end_Controller;
@@ -23,20 +24,37 @@ use Illuminate\Support\Facades\Route;
 */
 //font end
 Route::get('/', [Home_Font_End_Controller::class, 'index'])->name('home.index');
+Route::get('/product', [Home_Font_End_Controller::class, 'product'])->name('home.product');
+Route::get('/product-details', [Home_Font_End_Controller::class, 'product_details'])->name('home.product_details');
+
+
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.showCart');
+Route::get('/{id}/add-to-Cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::get('/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::post('/search',[Home_Font_End_Controller::class,'search'])->name('search');
+Route::get('/{id}show-category',[Home_Font_End_Controller::class,'searchCategory'])->name('searchCategory');
+
+
+
 //Route::get('/home', [LoginController::class, 'store'])->name('admin.home');
 
+
+
+
+
+
+//backend
 Route::get('/register', [AuthController::class, 'register'])->name('admin.register');
 Route::post('/register', [UserController::class, 'store'])->name('admin.store');
-//backend
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logOut'])->name('logout');
+
+
 Route::middleware('auth')->prefix('/admin')->group(function () {
-    Route::get('/', [Home_back_end_Controller::class, 'showHome'])->name('admin.showHome');
+    Route::get('/', [UserController::class, 'showPageAdmin'])->name('admin.showHome');
 
-
-
-    //Category
     Route::prefix('/category')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
@@ -46,7 +64,6 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
         Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
     });
 
-//Brand
     Route::prefix('/brand')->group(function () {
         Route::get('/', [BrandController::class, 'index'])->name('brand.index');
         Route::get('/create', [BrandController::class, 'create'])->name('brand.create');
@@ -55,8 +72,6 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
         Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('brand.edit');
         Route::post('/{id}/update', [BrandController::class, 'update'])->name('brand.update');
     });
-
-//product
 
     Route::prefix('/product')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('product.index');
@@ -67,7 +82,6 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
         Route::post('/{id}/update', [ProductController::class, 'update'])->name('product.update');
     });
 
-//customer
     Route::prefix('/customer')->group(function () {
         Route::get('/', [CustomersController::class, 'index'])->name('customer.index');
         Route::get('/create', [CustomersController::class, 'create'])->name('customer.create');

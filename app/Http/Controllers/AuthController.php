@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AuthController extends Controller
 {
@@ -16,17 +17,24 @@ class AuthController extends Controller
     {
         return view('back-end.login.dangky');
     }
-    public function login(Request $request){
+
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials)) {
-
+        if (Auth::attempt($credentials)) {
+            if ($request->email == "admin@gmail.com") {
+                return redirect()->route('admin.showHome');
+            } else {
+                return redirect()->route('home.index');
+            }
+        } else {
             return redirect()->route('showLogin');
-        }else{
-            return redirect()->route('admin.showHome');
         }
     }
-    public function logOut(){
+
+    public function logOut()
+    {
         Auth::logout();
         return redirect()->route('showLogin');
     }
