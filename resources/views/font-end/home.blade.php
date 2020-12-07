@@ -22,7 +22,7 @@
                           <h2>Gia:{{number_format($value->price,0,',','.')}}VND</h2>
                             <p>{{$value->name}}</p>
                             <a href="{{route('cart.addToCart',$value->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                            <a href="{{route('home.product_details')}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                            <a href="{{route('home.product_details',$value->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
 
                         </div>
                     </div>

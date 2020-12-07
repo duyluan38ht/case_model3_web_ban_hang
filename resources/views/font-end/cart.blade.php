@@ -12,11 +12,11 @@
                 <table class="table table-condensed">
                     <thead>
                     <tr class="cart_menu">
-                        <td class="image">Item</td>
-                        <td class="description"></td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
+                        <td class="image">Hinh Anh</td>
+                        <td class="description">Tên Sản  Phẩm</td>
+                        <td class="price">Giá</td>
+                        <td class="quantity">Số Lượng</td>
+                        <td class="total">Tổng Tiền</td>
                         <td></td>
                     </tr>
                     </thead>
@@ -24,7 +24,8 @@
                     @foreach($cart as $value)
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img style="width: 60px" src="{{asset($product[$value->id]->image)}}" alt=""></a>
+                            <a href=""><img style="width: 60px" src="{{asset($products[$value->id-1]->image)}}"></a>
+
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$value->name}}</a></h4>
@@ -35,9 +36,9 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
+
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{$value->qty}}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+
                             </div>
                         </td>
                         <td class="cart_total">
@@ -51,7 +52,7 @@
 
                     </tbody>
                 </table>
-                <p>Total Price:{{$totalPrice}}</p>
+                <h3>Tổng Tiền:{{$totalPrice}}VND</h3>
             </div>
         </div>
     </section> <!--/#cart_items-->

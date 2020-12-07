@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 //font end
 Route::get('/', [Home_Font_End_Controller::class, 'index'])->name('home.index');
 Route::get('/product', [Home_Font_End_Controller::class, 'product'])->name('home.product');
-Route::get('/product-details', [Home_Font_End_Controller::class, 'product_details'])->name('home.product_details');
+Route::get('/{id}/product-details', [Home_Font_End_Controller::class, 'product_details'])->name('home.product_details');
 
 
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.showCart');
@@ -33,7 +33,7 @@ Route::get('/{id}/add-to-Cart', [CartController::class, 'addToCart'])->name('car
 Route::get('/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::post('/search',[Home_Font_End_Controller::class,'search'])->name('search');
-Route::get('/{id}show-category',[Home_Font_End_Controller::class,'searchCategory'])->name('searchCategory');
+Route::get('/{id}/show-category',[Home_Font_End_Controller::class,'searchCategory'])->name('searchCategory');
 
 
 
@@ -89,6 +89,10 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
         Route::get('/{id}/delete', [CustomersController::class, 'destroy'])->name('customer.destroy');
         Route::get('/{id}/edit', [CustomersController::class, 'edit'])->name('customer.edit');
         Route::post('/{id}/update', [CustomersController::class, 'update'])->name('customer.update');
+    });
+
+    Route::prefix('/user')->group(function (){
+        Route::get('/',[UserController::class,'index'])->name('user.index');
     });
 
 });

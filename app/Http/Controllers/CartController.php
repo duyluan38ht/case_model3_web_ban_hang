@@ -10,13 +10,12 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function showCart(){
-        $product=Product::all();
+        $products=Product::all();
         $category=Category::all();
         $cart=Cart::content();
         $totalPrice=Cart::subtotal();
 
-
-        return view('font-end.cart',compact('category','cart','totalPrice','product'));
+        return view('font-end.cart',compact('category','cart','totalPrice','products'));
     }
 
     public function addToCart($id)

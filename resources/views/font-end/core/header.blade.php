@@ -7,7 +7,7 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <div class="logo pull-left">
-                                    <a href="index.html"><img style="width: 100px" src="{{asset('banenr/logoshop.webp')}}" alt="" /></a>
+{{--                                    <a href="index.html"><img style="width: 100px" src="{{asset('banenr/logoshop.webp')}}" alt="" /></a>--}}
                                 </div>
                                 <li><a href="{{route('home.index')}}" class="active"><b>Trang Chủ</b></a></li>
                                 <li class="dropdown"><a href="#"><b>Shop</b><i class="fa fa-angle-down"></i></a>

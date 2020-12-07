@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Http\Requests\add_CustomerRequest;
 use App\Http\Service\CustomerService;
 use App\Models\Customers;
 use Illuminate\Http\Request;
+
 
 class CustomersController extends Controller
 {
@@ -26,7 +30,7 @@ class CustomersController extends Controller
         return view('back-end.customer.addCustomer');
     }
 
-    public function store(Request $request)
+    public function store(add_CustomerRequest $request)
     {
         $this->customerService->store($request);
         return redirect()->route('customer.index');
