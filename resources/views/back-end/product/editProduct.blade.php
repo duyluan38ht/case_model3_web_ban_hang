@@ -44,7 +44,7 @@
                     <label>Ghi Chú</label>
                     <input type="text" class="form-control" name="note" value="{{$product->note}}">
                 </div>
-                <button type="submit" class="btn btn-success">Thêm San Pham</button>
+                <button type="submit" class="btn btn-success">UPDATE</button>
             </form>
         </div>
     </div>

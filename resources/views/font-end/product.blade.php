@@ -39,20 +39,16 @@
                             </div>
                         </div>
                         @endforeach
-
-
-
-
-
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">&raquo;</a></li>
-                        </ul>
                     </div><!--features_items-->
                 </div>
             </div>
         </div>
+
+
     </section>
+<div class="container">
+    <ul class="pagination">
+        <span>{!! $product->render() !!}</span>
+    </ul>
+</div>
 @endsection

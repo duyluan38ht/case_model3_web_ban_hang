@@ -4,12 +4,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\Home_back_end_Controller;
 use App\Http\Controllers\Home_Font_End_Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\UserCan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +40,20 @@ Route::get('/{id}/show-category',[Home_Font_End_Controller::class,'searchCategor
 
 
 
-//Route::get('/home', [LoginController::class, 'store'])->name('admin.home');
+//Search
+Route::get('/search',[SearchController::class,'searchAoVest'])->name('searchAoVest');
+Route::get('/search-quan-jean',[SearchController::class,'searchQuanJean'])->name('searchQuanJean');
+Route::get('/search-ao-so-mi',[SearchController::class,'searchAoSoMi'])->name('searchAoSoMi');
 
-
+//CheckOut
+Route::get('/login-check-out',[CheckOutController::class,'showCheckOut'])->name('showCheckOut');
+Route::post('/add-customer',[CheckOutController::class,'add_Customer'])->name('add_Customer');
+Route::get('/check-out',[CheckOutController::class,'checkOut'])->name('checkOut');
+Route::post('/save-check-out',[CheckOutController::class,'save_checkOut'])->name('Save.checkOut');
+Route::get('/payment',[CheckOutController::class,'payment'])->name('payment');
+Route::get('/logout-checkout',[CheckOutController::class,'logout_checkOut'])->name('logout.checkOut');
+Route::post('/login-checkout',[CheckOutController::class,'login_customer'])->name('login.customer');
+Route::post('/order-place',[CheckOutController::class,'order_place'])->name('order_place');
 
 
 
@@ -52,7 +66,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logOut'])->name('logout');
 
 
-Route::middleware('auth')->prefix('/admin')->group(function () {
+Route::middleware('auth')->middleware(UserCan::class)->prefix('/admin')->group(function () {
     Route::get('/', [UserController::class, 'showPageAdmin'])->name('admin.showHome');
 
     Route::prefix('/category')->group(function () {

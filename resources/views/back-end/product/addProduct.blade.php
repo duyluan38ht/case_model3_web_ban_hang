@@ -2,7 +2,13 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-
+            <h3 style="color: red;text-align: center"><?php
+                $message = Session::get('message');
+                if ($message) {
+                    echo '<span class="text-alert">' . $message . '</span>';
+                    Session::put('message', null);
+                }
+                ?></h3>
         </div>
         <div class="card-body">
             <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
@@ -43,7 +49,8 @@
                 </div>
                 <div class="form-group">
                     <label>Số Lượng</label>
-                    <input type="number" class="form-control @error('quantity') border-danger @enderror()" name="quantity">
+                    <input type="number" class="form-control @error('quantity') border-danger @enderror()"
+                           name="quantity">
                     <div class="error-message">
                         @if ($errors->any())
                             <p style="color:red">{{ $errors->first('quantity') }}</p>

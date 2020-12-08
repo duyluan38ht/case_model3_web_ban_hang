@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -36,7 +37,8 @@ class ProductController extends Controller
     public function store(add_productRequest $request)
     {
         $this->productService->store($request);
-        return redirect()->route('product.index');
+        Session::put('message','Thêm sản phẩm thành công');
+        return redirect()->route('product.store');
     }
 
 
@@ -56,8 +58,10 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $this->productService->update($request,$id);
-//        dd($this->productService);
+
+
         return redirect()->route('product.index');
     }
 

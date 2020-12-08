@@ -52,10 +52,44 @@
 
                     </tbody>
                 </table>
-                <h3>Tổng Tiền:{{$totalPrice}}VND</h3>
+
             </div>
         </div>
     </section> <!--/#cart_items-->
+    <section id="do_action">
+        <div class="container">
+            <div class="heading">
+                <h3 syle="color: red">Thanh Toán</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="total_area">
+                        <ul>
+                            <li>Tổng<span>{{$totalPrice}}VND</span></li>
+                            <li>Thuế <span>0vnd</span></li>
+                            <li>Ph Van chuyen <span>Free</span></li>
+                           <li>Thanh Tien <span>$61</span></li>
+                        </ul>
 
+
+                        <?php
+                        $customer_id = Session::get('id');
+                        if($customer_id!=NULL){
+                        ?>
+
+                        <a class="btn btn-default check_out" href="{{route('checkOut')}}">Thanh toán</a>
+                        <?php
+                        }else{
+                        ?>
+
+                        <a class="btn btn-default check_out" href="{{route('showCheckOut')}}">Thanh toán</a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#do_action-->
 
 @endsection

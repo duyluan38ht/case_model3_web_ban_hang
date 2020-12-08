@@ -31,6 +31,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->store($request);
+
+
         return redirect()->route('category.index');
     }
 

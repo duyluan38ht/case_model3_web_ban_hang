@@ -6,14 +6,26 @@
             <div class="panel panel-default">
 
             </div>
-            @foreach($category as $key=>$value)
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><a href="{{route('searchCategory',$value->id)}}">{{$value->name}}</a>
-                        </h4>
+                        <h4 class="panel-title"><a href="{{route('searchAoVest')}}">ÁO VEST</a></h4>
                     </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="">ÁO KHOÁC</a></h4>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="">ÁO LEN</a></h4>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="{{route('searchQuanJean')}}">QUẦN JEANS</a></h4>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="{{route('searchAoSoMi')}}">ÁO SƠ MI</a></h4>
+                    </div>
+
                 </div>
-            @endforeach
+
         </div><!--/category-products-->
 
 
