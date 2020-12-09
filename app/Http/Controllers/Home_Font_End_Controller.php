@@ -19,7 +19,7 @@ class Home_Font_End_Controller extends Controller
 
     public function product()
     {
-        $product =  DB::table('products')->paginate(3);
+        $product =  DB::table('products')->paginate(6);
 
         return view('font-end.product', compact( 'product'));
     }

@@ -68,7 +68,7 @@
                             <li>Tổng<span>{{$totalPrice}}VND</span></li>
                             <li>Thuế <span>0vnd</span></li>
                             <li>Ph Van chuyen <span>Free</span></li>
-                           <li>Thanh Tien <span>$61</span></li>
+                           <li>Thanh Tien <span>{{$totalPrice}}VND</span></li>
                         </ul>
 
 

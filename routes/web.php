@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\Home_back_end_Controller;
 use App\Http\Controllers\Home_Font_End_Controller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
@@ -66,7 +67,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logOut'])->name('logout');
 
 
-Route::middleware('auth')->middleware(UserCan::class)->prefix('/admin')->group(function () {
+Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::get('/', [UserController::class, 'showPageAdmin'])->name('admin.showHome');
 
     Route::prefix('/category')->group(function () {
@@ -109,7 +110,11 @@ Route::middleware('auth')->middleware(UserCan::class)->prefix('/admin')->group(f
         Route::get('/',[UserController::class,'index'])->name('user.index');
     });
 
+    Route::get('/order',[OrderController::class,'index'])->name('order.manager');
+
 });
+
+
 
 
 

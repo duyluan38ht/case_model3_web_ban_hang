@@ -47,8 +47,8 @@
 
     </section>
 <div class="container">
-    <ul class="pagination">
-        <span>{!! $product->render() !!}</span>
-    </ul>
+
+       <h3 style="text-align: center"> <span>{!! $product->render() !!}</span></h3>
+
 </div>
 @endsection
